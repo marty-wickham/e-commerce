@@ -16,8 +16,18 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from accounts import urls as urls_accounts
+from products import urls as urls_products
+from products.views import get_products
+from django.views import static
+from .settings import MEDIA_ROOT
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    # if there's no name after the slash in the URL, then we will just display all_products.
+    url(r'^$', get_products, name='index' ),
     url(r'^accounts/', include(urls_accounts)),
+    # for /products, we will include all our URLs from the products app.
+    url(r'^products/', include(urls_products)),
+    # Because we are now using images in media, we need to the specific media URL.
+    url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT})
 ]
