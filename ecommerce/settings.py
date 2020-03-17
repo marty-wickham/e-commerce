@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'accounts',
     # This is how makemigrations and migrate knows which apps to look for for models.
     'products',
-    'cart'
+    'cart',
+    'checkout',
 ]
 
 MIDDLEWARE = [
@@ -143,3 +144,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+STRIPE_PUBLISHABLE = os.environ.get('STRIPE_PULISHABLE')
+STRIPE_SECRET = os.environ.get('STRIPE_SECRET')

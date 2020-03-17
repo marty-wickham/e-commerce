@@ -2,8 +2,8 @@
 {% block content %}
 <div class="row row-flex">
     {% for product in products %}
-        <div class="col-xs-10 offset-xs-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
-        
+        <div class="col-xs-10 offset-xs-1 col-sm-offset-0 col-sm-6 col-md-4 panel">
+
             <div class="panel-body">
             <!-- By making a background image, we can make it fit the size of the <div> so that different sized images for different products won't end up looking mismatched in terms of size and shape -->
                 <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ product.image }}')"></div>

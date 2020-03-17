@@ -19,6 +19,7 @@ from accounts import urls as urls_accounts
 from products import urls as urls_products
 from cart import urls as urls_cart
 from search import urls as urls_search
+from checkout import urls as urls_checkout
 from products.views import get_products
 from django.views import static
 from .settings import MEDIA_ROOT
@@ -32,6 +33,7 @@ urlpatterns = [
     url(r'^products/', include(urls_products)),
     url(r'^cart/', include(urls_cart)),
     url(r'^search/', include(urls_search)),
+    url(r'^checkout/', include(urls_checkout)),
     # Because we are now using images in media, we need to the specific media URL.
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT})
 ]
