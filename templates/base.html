@@ -9,10 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="{% static 'font-awesome/css/fontawesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    {% block head_js %}
-    {% endblock head_js %}
 </head>
 <body>
     <!-- Fixed masthead -->
@@ -58,11 +54,13 @@
         </div>
     {% endif %}
     <div class="container">
-        <div class="display-1">
-            <form action="{% url 'search' %}" methd="get">
-                <input type="text" name="q">
-                <button type="search">Search</button>
-            </form>
+        <div class="row row-flex">
+            <div class="col">
+                <form action="{% url 'search' %}" methd="get">
+                    <input type="text" name="q">
+                    <button type="search">Search</button>
+                </form>
+            </div>
         </div>
         {% block content %} {% endblock %}
     </div>
@@ -71,5 +69,10 @@
             <p>Made by Code Institute bootcampers</p>
         </div>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% block head_js %}
+    {% endblock head_js %}
 </body>
 </html>

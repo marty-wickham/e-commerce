@@ -6,6 +6,7 @@ from .forms import OrderForm, MakePaymentForm
 from django.utils import timezone
 from products.models import Product
 from .models import OrderLineItem
+from django.contrib import messages
 
 # Create your views here.
 stripe.api_key = settings.STRIPE_SECRET
@@ -35,10 +36,10 @@ def checkout(request):
    
             try:
                 customer = stripe.Charge.create(
-                    amount = int(total * 100),
+                    amount=int(total * 100),
                     currency="Eur",
                     description=request.user.email,
-                    card=payment_form.cleaned_data['stripe_id']
+                    card=payment_form.cleaned_data['stripe_id'],
                 )
             except stripe.error.CardError:
                 messages.error(request, "Your card was declined!")
@@ -57,4 +58,4 @@ def checkout(request):
         payment_form = MakePaymentForm()
         order_form = OrderForm()
     
-    return render(request, "checkout.html", {'order_form': order_form, 'payment_form': payment_form, 'pulishable': settings.STRIPE_PULISHABLE})
+    return render(request, "checkout.html", {'order_form': order_form, 'payment_form': payment_form, 'pulishable': settings.STRIPE_PUBLISHABLE})
