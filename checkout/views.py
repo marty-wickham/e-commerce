@@ -11,6 +11,7 @@ from django.contrib import messages
 # Create your views here.
 stripe.api_key = settings.STRIPE_SECRET
 
+"""We also are going to import auth.decorators login_required because you want your customer to be logged in when they actually purchase something."""
 @login_required()
 def checkout(request):
     if request.method == "POST":
