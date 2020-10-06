@@ -9,7 +9,7 @@ def cart_contents(request):
     # Requests the existing cart if there is one, or a blank dictionary if there's not.
     cart = request.session.get('cart', {})
 
-    cart_items =[]
+    cart_items = []
     total = 0
     product_count = 0
 

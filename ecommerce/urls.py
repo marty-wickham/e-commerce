@@ -27,7 +27,7 @@ from .settings import MEDIA_ROOT
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # if there's no name after the slash in the URL, then we will just display all_products.
-    url(r'^$', get_products, name='index' ),
+    url(r'^$', get_products, name='index'),
     url(r'^accounts/', include(urls_accounts)),
     # for /products, we will include all our URLs from the products app.
     url(r'^products/', include(urls_products)),
